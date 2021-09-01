@@ -39,3 +39,4 @@ for item in allItems:
     itemPath = os.path.join(downloadPath, item)
     if not os.path.isdir(itemPath):
         shutil.move(itemPath, targetPath)
+
