@@ -8,3 +8,4 @@ targetItems = ['东北虎.jpg', '非洲最美猎豹.jpg', '非洲最美长颈鹿
 for item in targetItems:
     beforePath = os.path.join(sourcePath, item)
     shutil.move(beforePath, targetPath)
+

@@ -17,3 +17,4 @@ for item in allItems:
         print(f"{item}没有交任务书")
     elif document4 not in allDocuments:
         print(f"{item}没有交指导记录表")
+
