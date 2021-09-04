@@ -23,5 +23,4 @@ for photo in photoList:
 
     if not os.path.exists(photoTargetPath):
         os.mkdir(photoTargetPath)
-
     shutil.move(photoPath,targetFolderName)
