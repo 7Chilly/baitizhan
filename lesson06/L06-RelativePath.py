@@ -6,7 +6,7 @@ os.chdir("/Users/chilly/Desktop/python/yequ/崩溃的阿文/lesson06")
 downloadPath = "照片"
 photoList = os.listdir(downloadPath)
 
-for photo in photoList:
+for photo in downloadPath:
     photoPath = os.path.join(downloadPath, photo)
     exifInfo = ezexif.process_file(photoPath)
     # 获取拍摄时间
