@@ -2,7 +2,9 @@ import os
 import ezexif
 import shutil
 
-os.chdir("/Users/chilly/Desktop/python/yequ/崩溃的阿文/lesson06")
+# os.chdir("/Users/chilly/Desktop/python/yequ/崩溃的阿文/lesson06")
+# The statement above removed on Windows device by Jisen Ren.
+# Actually the original os.chdir statement is not necessary. You can change working directory inside PyCharm.
 downloadPath = "照片"
 photoList = os.listdir(downloadPath)
 
@@ -23,4 +25,6 @@ for photo in downloadPath:
 
     if not os.path.exists(photoTargetPath):
         os.mkdir(photoTargetPath)
-    shutil.move(photoPath,targetFolderName)
+    # shutil.move(photoPath, targetFolderName)
+    # The statement above is erroneous!
+    shutil.move(photoPath, photoTargetPath)
