@@ -1,14 +1,13 @@
 import os
 import shutil
 
-#遍历downloads文件夹里的文件（夹）名
+# 遍历downloads文件夹里的文件（夹）名
 downloadPath = "/Users/chilly/Desktop/python/yequ/爱整理的阿文/Downloads"
 allItems = os.listdir(downloadPath)
 for item in allItems:
-    #获取文件名后缀小写
+    # 获取文件名后缀小写
     extension = os.path.splitext(item)[1].lower()
 
-    targetPath = []
     if extension in [".jpg", ".jpeg", ".gif", ".png", ".bmp"]:
         targetPath = os.path.join(downloadPath, "图片文件")
 
@@ -39,4 +38,3 @@ for item in allItems:
     itemPath = os.path.join(downloadPath, item)
     if not os.path.isdir(itemPath):
         shutil.move(itemPath, targetPath)
-

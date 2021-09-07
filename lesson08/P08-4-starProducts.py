@@ -1,4 +1,5 @@
 import openpyxl
+from openpyxl import utils
 
 wb = openpyxl.load_workbook("2019年1月销售订单.xlsx",data_only=True)
 salesSheet = wb["销售订单数据"]
@@ -7,7 +8,7 @@ for rowData in salesSheet.rows:
     productName = rowData[2].value
     if productName == "商品名":
         continue
-    salesAmountIndex = openpyxl.utils.cell.column_index_from_string("I") - 1
+    salesAmountIndex = utils.cell.column_index_from_string("I") - 1
     salesAmount = rowData[salesAmountIndex].value
     if productName not in productData.keys():
         productData[productName] = salesAmount
