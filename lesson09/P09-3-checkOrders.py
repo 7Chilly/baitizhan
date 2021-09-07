@@ -5,7 +5,7 @@ def getOrderList(filepath, worksheet, column, exception):
     orderList= []
     for rowData in orderSheet.rows:
         order = rowData[column].value
-        if order == exception :
+        if order == exception:
             continue
         orderList.append(order)
     return orderList
