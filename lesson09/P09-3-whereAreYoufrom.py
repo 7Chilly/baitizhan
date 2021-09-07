@@ -17,6 +17,7 @@ for rowData in workSheet.rows:
         os.mkdir(targetPath)
     shutil.move(downloadPath, targetPath)
 
+
 # 夜曲大学招生办Wendy收到了今年来自国内各个地区的学生资料，位于路径/Users/Wendy/学生资料 下。
 # 每个学生资料以他们的姓名命名，例如：毛大鹏.docx
 # 现在Wendy想把这些学生资料按照他们的地区进行分类，以便于之后发给对应地区的负责人。分类的文件夹需要创建在/Users/Wendy/学生资料这个路径下，例如：/Users/Wendy/学生资料/四川
