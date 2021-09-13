@@ -11,4 +11,3 @@ for para in doc.paragraphs:
             aSheet.append([run.text])
 
 wb.save("重点单词.xlsx")
-

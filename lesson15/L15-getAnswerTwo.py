@@ -20,6 +20,3 @@ for item in allItems:
 
     allStudentData.append(studentData)
 print(allStudentData)
-
-
-
