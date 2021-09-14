@@ -34,3 +34,4 @@ for index, studentData in enumerate(allStudentData, 2):
     sheet[f"H{index}"].value = studentData["qq"]
     sheet[f"I{index}"].value = studentData["yesorno"]
 wb.save("志愿者统计.xlsx")
+
