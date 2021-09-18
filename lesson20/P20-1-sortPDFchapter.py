@@ -7,6 +7,7 @@ for item in allItems:
     chapterList.append(chapter)
 chapterList.sort(key=int)
 newFileList = []
+
 for i in chapterList:
     for item in allItems:
         newName = os.path.splitext(item)[0].split("-")[1]
