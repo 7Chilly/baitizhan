@@ -9,4 +9,3 @@ def sortFile(fileName):
 
 allItems.sort(key=sortFile)
 print(allItems)
-
