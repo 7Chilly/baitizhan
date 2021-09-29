@@ -5,11 +5,15 @@ from docx.shared import Pt
 from docx.oxml.ns import qn
 
 
-def getBold(table, rowIndex):
+def getBold(table, rowIndex, columnIndex):
     firstCell = table.cell(rowIndex,0).paragraphs[0].runs[0].bold
-    secondCell = table.cell(rowIndex,1).paragraphs[0].runs[0].bold
-    if firstCell or secondCell:
-        return True
+    if columnIndex == 0:
+        if firstCell:
+            return True
+    else:
+        secondCell = table.cell(rowIndex,1).paragraphs[0].runs[0].bold
+        if firstCell or secondCell:
+            return True
 
 
 def changeChinese(run):

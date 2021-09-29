@@ -4,11 +4,15 @@ from docx.enum.table import WD_TABLE_ALIGNMENT
 from docx.shared import Pt
 from docx.oxml.ns import qn
 
-def getBold(table, rowIndex):
+def getBold(table, rowIndex, columnIndex):
     firstCell = table.cell(rowIndex,0).paragraphs[0].runs[0].bold
-    secondCell = table.cell(rowIndex,1).paragraphs[0].runs[0].bold
-    if firstCell or secondCell:
-        return True
+    if columnIndex == 0:
+        if firstCell:
+            return True
+    else:
+        secondCell = table.cell(rowIndex,1).paragraphs[0].runs[0].bold
+        if firstCell or secondCell:
+            return True
 
 def changeChinese(run):
     run.font.name = "宋体"
@@ -39,10 +43,12 @@ def zeroDecPer(cell):
     return Info
 
 
-wb = openpyxl.load_workbook("招股书表格.xlsx", data_only= True)
-docName = "九、主要财务指标.docx"
+wb = openpyxl.load_workbook("【完整版+修改部分表版】尝试表格.xlsx", data_only= True)
+docName = "【有研硅】财务部分.docx"
 doc = docx.Document(docName)
 for idx, ws in enumerate(wb.worksheets):
+    if idx == 19:
+        continue
     table = doc.tables[idx]
     for rowIndex, row in enumerate(ws.rows):
         if rowIndex < len(table.rows):
@@ -62,7 +68,7 @@ for idx, ws in enumerate(wb.worksheets):
                             changeChinese(run)
                             run.font.name = "Times New Roman"
                             run.font.size = Pt(10.5)
-                            if getBold(table, rowIndex):
+                            if getBold(table, rowIndex, columnIndex):
                                 table.cell(rowIndex, columnIndex).paragraphs[0].runs[0].font.bold = True
                             table.cell(rowIndex, columnIndex).paragraphs[0].alignment = WD_TABLE_ALIGNMENT.RIGHT
                         else:
@@ -70,7 +76,7 @@ for idx, ws in enumerate(wb.worksheets):
                             run = table.cell(rowIndex, columnIndex).paragraphs[0].runs[0]
                             run = changeChinese(run)
                             run.font.name = "Times New Roman"
-                            if getBold(table, rowIndex):
+                            if getBold(table, rowIndex, columnIndex):
                                 table.cell(rowIndex, columnIndex).paragraphs[0].runs[0].font.bold = True
                             table.cell(rowIndex, columnIndex).paragraphs[0].alignment = WD_TABLE_ALIGNMENT.CENTER
 
@@ -93,11 +99,11 @@ for idx, ws in enumerate(wb.worksheets):
                         run = table.cell(rowIndex, columnIndex).paragraphs[0].runs[0]
                         run.font.name = "Times New Roman"
                         run.font.size = Pt(10.5)
-                        if getBold(table, rowIndex):
+                        if getBold(table, rowIndex, columnIndex):
                             table.cell(rowIndex, columnIndex).paragraphs[0].runs[0].font.bold = True
                         table.cell(rowIndex, columnIndex).paragraphs[0].alignment = WD_TABLE_ALIGNMENT.RIGHT
 
-saveName = docName.split(".")[0] + "002.docx"
+saveName = docName.split(".")[0] + "001.docx"
 doc.save(saveName)
 
 
