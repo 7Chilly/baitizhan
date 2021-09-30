@@ -43,7 +43,7 @@ def iter_block_items(parent):
 document = Document('【有研硅】财务部分.docx')
 list = []
 tableIndex = 0
-for idx, block in enumerate(iter_block_items(document)):
+for block in iter_block_items(document):
     target = block.text if isinstance(block, Paragraph) else '<table>'
     list.append(target)
     if target == "<table>":
@@ -57,3 +57,5 @@ print(list[index-2])
 print(list[index-1])
 print(list[index+1])
 print(list[index+2])
+
+# Thanks for Scanny's wonderful coding, which helps me get the context of a given table.
